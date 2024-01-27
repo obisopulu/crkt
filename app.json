@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "news",
+    "slug": "news",
+    "scheme": "news",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FE4600"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#FE4600"
+      }
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png",
+    }
+  }
+}
