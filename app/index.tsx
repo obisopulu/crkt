@@ -3,9 +3,12 @@ import { Link, router } from "expo-router"
 import WeatherWidget from "../components/WeatherWidget"
 import ShadowText from "../components/ShadowText"
 import MyText from "../components/MyText"
+import Card from "../components/Card"
 import { COLOR } from "../utils/constants";
 
 const HomePage = () => {
+
+  let cardData = {}
   return (
     <View style={styles.container}>
       <ShadowText />
@@ -16,13 +19,15 @@ const HomePage = () => {
       <MyText style='catchPhrase'>
         Pocket-sized intel
       </MyText>
-      <Link href='/users'>Users</Link>
-      <Link href='/users/1'>User with ID</Link>
+      <Card data={cardData} />
+      <Card data={cardData} />
+      <Link href='/article'>Article</Link>
+      <Link href='/article/1'>Article with ID</Link>
       <Pressable onPress={() => router.push({
-        pathname: '/users/[id]',
+        pathname: '/article/[id]',
         params: { id: 2 }
       })}>
-        <Text>Go to User 2</Text>
+        <Text>Go to Article 2</Text>
       </Pressable>
     </View>
   )

@@ -14,19 +14,19 @@ const RootLayout = () => {
             }
         }}
         />
-        <Stack.Screen name='users/index'
+        <Stack.Screen name='article/index'
         options={{
-            headerTitle: 'Users',
+            headerTitle: 'Article',
             headerShown: true,
             headerStyle:{
                 backgroundColor: '#CCD'
             }
         }}
         />
-        <Stack.Screen name='users/[id]'
+        <Stack.Screen name='article/[id]'
         options={{
-            headerTitle: 'User with ID',
-            headerShown: true,
+            headerTitle: 'Article with ID',
+            headerShown: false,
             headerStyle:{
                 backgroundColor: '#DCC'
             }

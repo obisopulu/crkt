@@ -1,7 +1,8 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { Text, StyleSheet, View } from 'react-native';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen'
 import { COLOR } from "../utils/constants";
-import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
 
 interface MyTextProps {
   children: ReactNode;
@@ -10,6 +11,31 @@ interface MyTextProps {
 
 const MyText: React.FC<MyTextProps> = ({ children, style }) => {
 
+  const [fontsLoaded] = useFonts({
+    'interBlack': require('../assets/font/interBlack.ttf'),
+    'interBold': require('../assets/font/interBold.ttf'),
+    'interExtraBold': require('../assets/font/interExtraBold.ttf'),
+    'interExtraLight': require('../assets/font/interExtraLight.ttf'),
+    'interThin': require('../assets/font/interThin.ttf'),
+    'interSemiBold': require('../assets/font/interSemiBold.ttf'),
+    'interRegular': require('../assets/font/interRegular.ttf'),
+    'interMedium': require('../assets/font/interMedium.ttf'),
+    'interLight': require('../assets/font/interLight.ttf')
+  })
+
+  useEffect(() => {
+    const prepare = async (): Promise<void> => {
+      await SplashScreen.preventAutoHideAsync()
+    }
+
+    prepare()
+  }, [])
+
+  if(!fontsLoaded){
+    return undefined
+  }else{
+    SplashScreen.hideAsync()
+  }
   let content;
   
   switch (style) {
@@ -39,30 +65,31 @@ const MyText: React.FC<MyTextProps> = ({ children, style }) => {
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'Inter',
-    fontWeight: '900',
+    fontFamily: 'interBlack',
     color: COLOR.dark,
     fontSize: 48,
   },
   title: {
-    fontWeight: '900',
+    marginTop: 50,
+    fontFamily: 'interBlack',
     color: COLOR.dark,
-    fontSize: 48,
+    fontSize: 68,
   },
   catchPhrase: {
-    fontWeight: '100',
+    fontFamily: 'interExtraLight',
     color: COLOR.dark,
-    fontSize: 18,
+    fontSize: 20,
   },
   cardDate: {
-    fontWeight: '900',
-    color: COLOR.dark,
-    fontSize: 48,
+    fontFamily: 'interBold',
+    color: COLOR.theme,
+    fontSize: 64,
   },
   cardTitle: {
-    fontWeight: '900',
-    color: COLOR.dark,
-    fontSize: 48,
+    padding: 20,
+    fontFamily: 'interBold',
+    color: 'white',
+    fontSize: 32,
   },
 });
 export default MyText;
